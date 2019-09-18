@@ -1,0 +1,1 @@
+package com.google.tendengce.mapper;import com.google.tendengce.entity.Suser;import org.apache.ibatis.annotations.Param;public interface UserDao {    public Suser selectByPrimaryKey(int id);    public void addUserInfo(@Param(value = "suser") Suser suser);}

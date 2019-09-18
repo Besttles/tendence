@@ -1,0 +1,77 @@
+#配置端口
+server :
+  port :  8090
+
+#配置数据库
+spring:
+  datasource:
+    name: test
+    url: jdbc:mysql://localhost:3306/data?characterEncoding=utf-8&serverTimezone=UTC&useSSL=false
+    username: root
+    password: root
+    #配置druid数据源
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    filters: stat
+    maxActive: 20
+    initialSize: 1
+    maxWait: 60000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: select 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxOpenPreparedStatements: 20
+    thymeleaf:
+      prefix: classpath:/templates/
+      suffix: .html
+      encoding: UTF-8
+      content-type: text/html
+      cache: false
+    resources:
+      chain:
+        strategy:
+          content:
+            enabled: true
+            paths: /**
+  application:
+    name: service-tendece
+  cloud:
+    compatibility-verifier:
+      enabled: false        #配置Springboot版本检查冲突
+mybatis:
+  type-aliases-package: com.google.tendengce.mapper
+  mapper-locations: classpath:mapper/*.xml
+  configLocation: classpath:config/mybatis-config.xml
+
+#logging:
+#  config: classpath:log4j2.xml
+#  level: debug
+
+#配置actuator监控
+info:
+  name: tendence
+  server:
+    port:${server.port}
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"   #若不配置，默认开启 info 和 health
+#      base-path: /actuator  #Spring Boot 2.X 默认访问路径根目录为 /actuator
+  endpoint:
+    health:
+      show-details: always
+    shutdown:
+      enabled: true
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+feign:
+  hystrix:
+    enabled: true

@@ -1,0 +1,1 @@
+package com.google.tendengce.mapper;import com.google.tendengce.entity.Score;import org.apache.ibatis.annotations.Param;public interface ScoreDao {    public String selectScoreByPrimaryKey(int ID);    public void addScoreInfo(@Param(value = "score") Score score);}

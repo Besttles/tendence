@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.google.tendengce.mapper.ScoreDao" >
+
+
+<!--  <resultMap id="BaseResultMap" type="com.xiaour.spring.boot.entity.UserInfo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="age" property="age" jdbcType="VARCHAR" />
+  </resultMap>-->
+  
+  <select id="selectScoreByPrimaryKey" resultType="com.google.tendengce.entity.Score" parameterType="java.lang.Integer" >
+    select * from Score where id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <!---->
+  <insert id="addScoreInfo" parameterType="com.google.tendengce.entity.Score" useGeneratedKeys="true" keyProperty="score.id">
+
+    insert into Score (amount,vip_flag,create_date) values (#{score.amount},#{score.vipFlag},#{score.createDate})
+
+  </insert>
+
+</mapper>

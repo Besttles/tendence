@@ -1,0 +1,1 @@
+package com.google.tendengce.eureka;import org.springframework.stereotype.Component;@Componentpublic class EurekaInvokerFeed implements EurekaInvoker {    @Override    public String getHello() {        return "访问 service-hi 失败";    }}

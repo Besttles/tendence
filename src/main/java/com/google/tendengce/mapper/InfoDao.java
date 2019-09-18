@@ -1,0 +1,1 @@
+package com.google.tendengce.mapper;import com.google.tendengce.entity.Info;import org.apache.ibatis.annotations.Param;public interface InfoDao {    public Info getInfoById(int id);    public void addInfo(@Param("info") Info info);}
